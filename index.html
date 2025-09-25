@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pengecekan Judul Buku - Linear Search</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0a2a43;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background: #102f4c;
+      padding: 20px;
+      border-radius: 10px;
+      width: 400px;
+      text-align: center;
+    }
+    input, button {
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      width: 90%;
+    }
+    button {
+      background: #00bcd4;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #008ba3;
+    }
+    .result {
+      margin-top: 20px;
+      background: #081c2b;
+      padding: 10px;
+      border-radius: 5px;
+      min-height: 40px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Pengecekan Judul Buku</h2>
+    <p>Daftar Buku: Matematika, Bahasa Indonesia, Fisika, Kimia, Biologi</p>
+    <input type="text" id="search" placeholder="Masukkan judul buku">
+    <button onclick="cariBuku()">Cari</button>
+    <div class="result" id="hasil"></div>
+  </div>
+
+  <script>
+    function cariBuku() {
+      let books = ["Matematika", "Bahasa Indonesia", "Fisika", "Kimia", "Biologi"];
+      let search = document.getElementById("search").value.trim();
+      let found = false;
+      let posisi = -1;
+
+      for (let i = 0; i < books.length; i++) {
+        if (books[i].toLowerCase() === search.toLowerCase()) {
+          found = true;
+          posisi = i;
+          break;
+        }
+      }
+
+      let hasilDiv = document.getElementById("hasil");
+      if (found) {
+        hasilDiv.innerHTML = ✅ Buku "<b>${search}</b>" ditemukan di posisi ke-${posisi};
+      } else {
+        hasilDiv.innerHTML = ❌ Buku "<b>${search}</b>" tidak ditemukan dalam daftar;
+      }
+    }
+  </script>
+</body>
+</html>
